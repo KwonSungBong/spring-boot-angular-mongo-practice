@@ -3,6 +3,19 @@ server:
   contextPath: /
 
 spring:
+
+  data:
+    mongodb:
+#      authentication-database: test # Database name.
+#      field-naming-strategy: # Fully qualified name of the FieldNamingStrategy to use.
+#      grid-fs-database: # GridFS database name.
+#      host: localhost # Mongo server host.
+#      password: # Login password of the mongo server.
+#      port: 27017 # Mongo server port.
+#      repositories.enabled: true # Enable Mongo repositories.
+#      uri: mongodb://localhost/test # Mongo database URI. When set, host and port are ignored.
+#      username: # Login user of the mongo server.
+
   resources:
     cache-period: 0
     static-locations: file:src/main/resources/static/

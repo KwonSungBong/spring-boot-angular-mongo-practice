@@ -1,0 +1,19 @@
+version: '2.1'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+     - "27017:27017"
+  spring-boot-1:
+    image: spring-boot:0.0.1-SNAPSHOT
+    depends_on:
+      - mongodb
+    ports:
+      - "9001:8888/tcp"
+  spring-boot-2:
+    image: spring-boot:0.0.1-SNAPSHOT
+    depends_on:
+      - mongodb
+    ports:
+      - "9002:8888/tcp"
