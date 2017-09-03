@@ -3,7 +3,6 @@ server:
   contextPath: /
 
 spring:
-
   data:
     mongodb:
 #      authentication-database: test # Database name.
@@ -19,3 +18,21 @@ spring:
   resources:
     cache-period: 0
     static-locations: file:src/main/resources/static/
+
+---
+
+spring:
+  profiles: prod
+  data:
+    mongodb:
+      authentication-database: test
+      host: mongo
+
+  resources:
+    cache-period: 0
+    static-locations: file:src/main/resources/static/
+
+server:
+  port: 80
+  contextPath: /
+

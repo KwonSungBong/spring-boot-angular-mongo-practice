@@ -1,19 +1,29 @@
 version: '2.1'
 services:
-  mongodb:
+  mongo:
     image: mongo:latest
-    container_name: mongodb
     ports:
      - "27017:27017"
   spring-boot-1:
     image: spring-boot:0.0.1-SNAPSHOT
     depends_on:
-      - mongodb
+      - mongo
     ports:
-      - "9001:8888/tcp"
+      - "9001:80/tcp"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
   spring-boot-2:
     image: spring-boot:0.0.1-SNAPSHOT
     depends_on:
-      - mongodb
+      - mongo
     ports:
-      - "9002:8888/tcp"
+      - "9002:80/tcp"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
+  haproxy:
+    image: 'dockercloud/haproxy:latest'
+    links:
+      - spring-boot-1
+      - spring-boot-2
+    ports:
+      - '80:80/tcp'

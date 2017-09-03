@@ -41,9 +41,9 @@ repositories {
 
 
 dependencies {
+	compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.0')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compileOnly('org.projectlombok:lombok')
-	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.0')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
