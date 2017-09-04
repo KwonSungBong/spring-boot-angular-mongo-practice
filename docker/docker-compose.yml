@@ -8,20 +8,25 @@ services:
     image: spring-boot:0.0.1-SNAPSHOT
     depends_on:
       - mongo
-    ports:
-      - "9001:80/tcp"
+#    ports:
+#      - "9001:80/tcp"
     environment:
       - "SPRING_PROFILES_ACTIVE=prod"
   spring-boot-2:
     image: spring-boot:0.0.1-SNAPSHOT
     depends_on:
       - mongo
-    ports:
-      - "9002:80/tcp"
+#    ports:
+#      - "9002:80/tcp"
     environment:
       - "SPRING_PROFILES_ACTIVE=prod"
   haproxy:
-    image: 'dockercloud/haproxy:latest'
+    build:
+      context: ./haproxy/
+    image: 'custom/haproxy:latest'
+    depends_on:
+      - spring-boot-1
+      - spring-boot-2
     links:
       - spring-boot-1
       - spring-boot-2
